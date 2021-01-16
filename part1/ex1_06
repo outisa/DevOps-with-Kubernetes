@@ -1,0 +1,34 @@
+service.yaml:
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-svc
+spec:
+  type: NodePort
+  selector:
+    app: todo
+  ports:
+    - name: http
+      nodePort: 30080
+      protocol: TCP
+      port: 1234
+      targetPort: 3001
+```
+Commands run:
+```
+$ k3d cluster delete
+INFO[0000] Deleting cluster 'k3s-default'               
+... 
+INFO[0002] Successfully deleted cluster k3s-default!    
+$ k3d cluster create --port '8082:30080@agent[0]' -p 8081:80@loadbalancer --agents 2
+INFO[0000] Created network 'k3d-k3s-default'            
+...
+INFO[0015] Cluster 'k3s-default' created successfully!  
+...
+$ kubectl apply -f https://raw.githubusercontent.com/outisa/kubernetes-todo-app/master/manifests/deployment.yaml
+deployment.apps/todo-dep created
+$  kubectl apply -f manifests/service.yaml
+service/todo-svc created
+```
+And after this I checked that todo app is shown at localhost:8082
