@@ -7,3 +7,5 @@ This repository includes my answers to exercises in DevOps with Kubernetes -cour
 
 ### Source code to Todo application
 [Todo application](https://github.com/outisa/kubernetes-todo-app)
+### PingPong application
+[PingPong application](https://github.com/outisa/kubernetes-pingpong)
