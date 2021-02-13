@@ -1,9 +1,11 @@
-I modifed ingress.yaml file as follows
+I modifed hashgenerator ingress.yaml file as follows
 ```
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: dwk-material-ing
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
@@ -12,10 +14,24 @@ spec:
         backend:
           serviceName: hashgenerator-svc
           servicePort: 80
+```
+and pingpong yaml file as follows
+```
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pingpong-ing
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /pingpong
+spec:
+  rules:
+  - http:
+      paths:
       - path: /pingpong
         backend:
-          serviceName: pingpong-svc
+          serviceName: pingpong-backend-svc
           servicePort: 80
+
 ```
 And changed type on both service.yaml file to NodePort.
 Funny part is, that pingpong app is constatly pinged, as pongs increases all the time even though the browser is not refreshed.
@@ -23,3 +39,8 @@ Funny part is, that pingpong app is constatly pinged, as pongs increases all the
 Both applications at this moment.
 [Main app](https://github.com/outisa/kubernetes-mainApp/tree/b7636924a9980ec9cc6c697dcf439fea3547ba84)
 [Pingpong app](https://github.com/outisa/kubernetes-pingpong/tree/2ad2eed27aa0cf615968b7706f5cc7126cfe32ca)
+
+Ex. 3.09 I tested that scaling works. Memory with 45Mi caused all 6 replicas to run, so changed it back to 50Mi.
+[autoscaler](https://github.com/outisa/kubernetes-pingpong/blob/master/manifests/horizontalpodautoscaler.yaml)
+[deployment](https://github.com/outisa/kubernetes-pingpong/blob/master/manifests/deployment.yaml)
+
