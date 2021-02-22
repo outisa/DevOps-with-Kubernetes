@@ -1,6 +1,8 @@
 Exercise 5.02:
 
-[App now](https://github.com/outisa/kubernetes-todo-app) with linknerd injection in the deployment.yamls. I also fixed one image related error, which could exist when there is no image yet. I thought I had fixed it already, but the same error occured today after deleting the cluster and by recreating a new one.
+[App now](https://github.com/outisa/kubernetes-todo-app/tree/1c87cdb410ecf691963ffb4b13be6ee441ca5b80) with linknerd injection in the deployment.yamls. I also fixed one image related error, which could exist when there is no image yet. I thought I had fixed it already, but the same error occured today after deleting the cluster and by recreating a new one.
+
+I got a huge issue with added linknerd injection. Nats did not connected anymore after that or better said connection closed before anything happened. However, as I removed injection from the deployments all got as it was. This might be due the disk pressure or alike. So I removed the injection annotation after this exercise.
 
 Exercise 5.04:
 
