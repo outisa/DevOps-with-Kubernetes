@@ -4,17 +4,16 @@ Exercise 5.02:
 
 Exercise 5.04:
 
-I am comparing Rancher and OpenShift. I would choose Rancher for now as it:
+I am comparing Rancher and OpenShift. Both offers great stuff und promises easy way to do everything. I would choose Rancher for now as it:
 
 * It is free to use also in production. OpenShift has only free tiers to development and testing.
-* One need only from couple of ten minutes to the couple of hours install Rancher. However, it can take days to install Openshift completely.
-* Rancher get automatically updates between versions, OpenShift does not according to source (however, one can add operator framework to do that).
+* One need only from couple of ten minutes to the couple of hours install Rancher. However, it can take days to install Openshift completely. (May be old information)
+* I got a feeling that OpenShift were more like a service for bigger enterprises. That might be only illusion. However, I got a feeling that Rancher is more suitable to hobbu developer as it is free of charce. 
 * In OpenShift desicions are made for you so you have limited options to use. By using Rancher one does decisions by oneself.
 * Because of the previous point, you learn much more by using Rancher.
 * Rancher offers online training.
-* Rancher is Rancher, if one choose OpenShift on must decide which kind of 'package' one have and whom one pay for services.
+* OpenShift can build images for you from the source code. I do not like this beacuse I get the feeling that I would not know how this is done. I can undestand that for some compnies or people this is a good solution.
 * I liked Rancher websites than OpenShift.
 
-[I read some from here](https://ubuntu.com/kubernetes/compare)
-[And here](https://www.linkedin.com/pulse/rancher-vs-openshift-andrew-hines?articleId=6637307236312059904)
+
 
