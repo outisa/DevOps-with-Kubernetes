@@ -18,11 +18,16 @@ Exercise 4.04
 
 Exercise 4.05 and exercise 4.06
 
+
 I added also deleting a todo and some styles on the pages.
 
 [todo-app at this moment](https://github.com/outisa/kubernetes-todo-app/tree/a8b6bf07b0b91f99e81bce99228412cebfb4a372)
 
 [broadcaster](https://github.com/outisa/kubernetes-todo-app/tree/a8b6bf07b0b91f99e81bce99228412cebfb4a372/broadcaster)
+
+
+I added afterwards to the broadcaster index.js and to the todoRouter that I used this app https://github.com/kubernetes-hy/material-example/tree/master/app9 as an help to create messaging between pods with nats. (23.2.2021)
+
 
 Exercise 4.07 and 4.08
 
