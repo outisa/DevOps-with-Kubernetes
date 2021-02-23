@@ -4,6 +4,10 @@ Exercise 5.02:
 
 I got a huge issue with added linknerd injection. Nats did not connected anymore after that or better said connection closed before anything happened. However, as I removed injection from the deployments all got as it was. This might be due the disk pressure or alike. So I removed the injection annotation after this exercise.
 
+I was not happy with how it went yesterday with this exercise. So I came back to it.  I added linknerd sidecar and created new linkerddeployment.yaml files for it. And I did not do that to the broadcaster in the final version as this prevented somehow the messaging between the broadcaster and the app. It caused app to freeze because of some connections errors. Messaging was working as wanted, if I had only linkerd injected to backend and frontend. 
+
+[The final version of todo app](https://github.com/outisa/kubernetes-todo-app)
+
 Exercise 5.04:
 
 I am comparing Rancher and OpenShift. Both offers great stuff und promises easy way to do everything. I would choose Rancher for now as it:
@@ -17,5 +21,30 @@ I am comparing Rancher and OpenShift. Both offers great stuff und promises easy 
 * OpenShift can build images for you from the source code. I do not like this beacuse I get the feeling that I would not know how this is done. I can undestand that for some compnies or people this is a good solution.
 * I liked Rancher websites than OpenShift.
 
+Exercise 5.05
 
+[pingpong-app](https://github.com/outisa/kubernetes-pingpong)
+
+I tested this with busybox
+```
+$ kubectl exec -it busybox1 -- wget -qO - pingpong-app.default.svc.cluster.local/pingpong
+{"counts":8}
+$ kubectl exec -it busybox1 -- wget -qO - pingpong-app.default.svc.cluster.local/pingpong
+{"counts":9}
+$ kubectl exec -it busybox1 -- wget -qO - pingpong-app.default.svc.cluster.local/pingpong 
+{"counts":10}
+Here was some break and the next command took a while because the pingpong pod needed to be created again.
+$ kubectl exec -it busybox1 -- wget -qO - pingpong-app.default.svc.cluster.local/pingpong 
+{"counts":11}
+$ kubectl get po
+NAME                                          READY   STATUS    RESTARTS   AGE
+postgres-ss-0                                 1/1     Running   0          56m
+busybox1                                      1/1     Running   1          91m
+pingpong-app-v1-deployment-7b6bcd7769-4xnqr   2/2     Running   0          45s
+$ kubectl get ksvc
+NAME           URL                                       LATESTCREATED     LATESTREADY       READY   REASON
+pingpong-app   http://pingpong-app.default.example.com   pingpong-app-v1   pingpong-app-v1   True    
+``` 
+
+Exercise 5.06
 
